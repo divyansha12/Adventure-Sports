@@ -1,42 +1,16 @@
-# 🏞️ Adventure Sports Webpage (HTML & CSS)
+# React + Vite
 
-A visually engaging **Adventure Sports landing page** created using only **HTML and CSS**.  
-This project showcases adventure sports activities like **rock climbing, surfing, paragliding, and trekking**, with a modern, responsive, and interactive design — all without JavaScript.  
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## 📖 Project Overview
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-The Adventure Sports webpage demonstrates **front-end design skills** including layout structuring, typography, color harmony, and responsive design.  
-The goal was to create a **professional-looking, visually appealing interface** that can serve as a beginner-friendly portfolio project.  
+## React Compiler
 
-This project is ideal for practicing **HTML structure**, **CSS styling**, and **UI/UX design principles**.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
----
+## Expanding the ESLint configuration
 
-## ✨ Features
-
-- 🌄 **Hero Section with Background Image** — visually appealing first impression  
-- 📱 **Responsive Design** — works seamlessly on mobile and desktop screens  
-- 💫 **Hover Effects** — smooth transitions for images, buttons, and cards  
-- 🧩 **Structured and Clean Code** — beginner-friendly and easy to maintain  
-- 🎨 **Modern Aesthetic** — consistent color scheme, typography, and spacing  
-
----
-
-## 🧠 What I Learned
-
-- Using **HTML semantic elements** for better structure  
-- Styling **hero sections, cards, and buttons** with CSS  
-- Implementing **Flexbox and CSS Grid** for layout alignment  
-- Adding **hover effects, gradients, and overlays** for enhanced visuals  
-- Importance of **white space, typography, and color harmony**  
-
----
-
-## 🚀 Future Enhancements
-
-- Add **JavaScript interactivity** (e.g., slide shows, toggle effects)  
-- Implement **scroll animations** for dynamic user experience  
-- Include **image galleries or video backgrounds**  
-- Add **dark mode** for improved accessibility  
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

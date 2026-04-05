@@ -1,9 +1,12 @@
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -13,26 +16,48 @@ body {
   overflow-x: hidden;
 }
 
-/*  Navbar */
+/* --- [1] Navbar (Zero JS Scroll Detection) --- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 70px;
-  background-color: #e4e738;
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.15);
+  padding: 30px 70px;
+  background-color: transparent;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 1000;
+  
+  /* Modern CSS Scroll detection */
+  animation: navScrollChange linear both;
+  animation-timeline: scroll();
+  animation-range: 0px 100px;
+  transition: all 0.3s ease;
+}
+
+@keyframes navScrollChange {
+  to {
+    padding: 15px 70px;
+    background-color: rgba(228, 231, 56, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .logo {
   font-size: 1.9rem;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #111;
+  color: #fff;
+  animation: logoColorChange linear both;
+  animation-timeline: scroll();
+  animation-range: 0px 100px;
+}
+
+@keyframes logoColorChange {
+  to { color: #111; }
 }
 
 .nav-links {
@@ -41,23 +66,40 @@ body {
   list-style: none;
 }
 
-.nav-links li {
-  display: inline-block;
-}
-
-.nav-links a {
+.nav-btn {
   text-decoration: none;
-  color: #333;
+  color: #fff;
   font-weight: 500;
   letter-spacing: 0.5px;
+  padding-bottom: 5px;
+  position: relative;
   transition: color 0.3s ease;
+  
+  animation: navBtnColorChange linear both;
+  animation-timeline: scroll();
+  animation-range: 0px 100px;
 }
 
-.nav-links a:hover {
-  color: #007acc;
+@keyframes navBtnColorChange {
+  to { color: #333; }
 }
 
-/* front section */
+.nav-btn::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #03a9f4;
+  transition: width 0.3s ease;
+}
+
+.nav-btn:hover::after { width: 100%; }
+.nav-btn:hover { color: #007acc; }
+
+
+/* --- [2] Hero (Scroll-Based Parallax) --- */
 .front {
   position: relative;
   height: 100vh;
@@ -65,6 +107,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  overflow: hidden;
 }
 
 .front-bg {
@@ -74,135 +117,203 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(68%);
+  filter: brightness(60%);
   z-index: -1;
+  
+  /* Scroll-driven Scale Parallax */
+  animation: heroScrollScale linear both;
+  animation-timeline: scroll();
+  animation-range: 0 100vh;
+}
+
+/* Parallax zoom synced with user scroll */
+@keyframes heroScrollScale {
+  from { transform: scale(1); }
+  to { transform: scale(1.3) translateY(100px); }
 }
 
 .front-content {
   color: #fff;
-  max-width: 700px;
+  max-width: 750px;
   padding: 20px;
-  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .front-content h1 {
-  font-size: 2.9rem;
-  font-weight: 700;
-  margin-bottom: 18px;
+  font-size: 3.8rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: 1.5px;
+  line-height: 1.1;
+  
+  /* Entrance animation */
+  animation: entranceSlideUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 .front-content p {
-  font-size: 1.15rem;
-  letter-spacing: 0.3px;
-  margin-bottom: 35px;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 45px;
+  
+  /* Stagger entrance */
+  animation: entranceSlideUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s both;
+}
+
+@keyframes entranceSlideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .discover {
   display: inline-block;
-  padding: 14px 38px;
+  padding: 18px 50px;
   background-color: #03a9f4;
   color: #fff;
   text-decoration: none;
-  border-radius: 30px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  transition: background 0.3s ease, transform 0.2s ease;
+  border-radius: 40px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(3, 169, 244, 0.3);
+  position: relative;
+  overflow: hidden;
+  animation: entranceSlideUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s both;
 }
 
 .discover:hover {
   background-color: #0288d1;
-  transform: translateY(-2px);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(3, 169, 244, 0.5);
 }
 
-/*  Sports Section  */
+.discover::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.discover:hover::after {
+  left: 100%;
+}
+
+
+/* --- [3] Sports Cards (Zero JS Reveal on Scroll) --- */
 .sports-section {
   text-align: center;
-  padding: 100px 60px 70px;
-  background-color: #f8fafc;
+  padding: 120px 60px;
+  background: white;
 }
 
-.sports-section h2 {
-  font-size: 2.4rem;
-  margin-bottom: 55px;
+.section-title {
+  font-size: 2.8rem;
+  margin-bottom: 80px;
   color: #111;
   letter-spacing: 1px;
   position: relative;
-}
-
-.sports-section h2::after {
-  content: "";
-  position: absolute;
-  width: 60px;
-  height: 4px;
-  background-color: #03a9f4;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 3px;
+  display: inline-block;
+  
+  /* CSS Scroll Reveal (Anonymous view timeline) */
+  animation: fadeInUp linear both;
+  animation-timeline: view();
+  animation-range: entry 10% cover 40%;
 }
 
 .sports-card {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 35px;
+  gap: 40px;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
-.card1, .card2, .card3, .card4 {
+.sports-item {
   background-color: white;
-  border-radius: 14px;
+  border-radius: 20px;
   overflow: hidden;
-  width: 270px;
-  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 290px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  border: 1px solid #f0f0f0;
+
+  /* CSS Scroll Reveal (Anonymous view timeline) */
+  animation: fadeInUp linear both;
+  animation-timeline: view();
+  animation-range: entry 5% cover 35%;
 }
 
-.card1:hover, .card2:hover, .card3:hover, .card4:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(100px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-.card1 img, .card2 img, .card3 img, .card4 img {
+.sports-item:hover {
+  transform: translateY(-20px) rotateX(2deg) rotateY(-2deg);
+  box-shadow: 0 40px 60px rgba(0, 0, 0, 0.12);
+  border-color: #03a9f4;
+}
+
+.img-wrapper {
+  overflow: hidden;
+  height: 240px;
   width: 100%;
-  height: 200px;
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  transition: 0.8s ease;
 }
 
-.card1 h3, .card2 h3, .card3 h3, .card4 h3 {
-  margin-top: 18px;
-  font-size: 1.25rem;
-  font-weight: 600;
+.sports-item:hover .img-wrapper img {
+  transform: scale(1.15);
+}
+
+.card-content { padding: 30px 25px; }
+
+.card-content h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
   color: #111;
-  letter-spacing: 0.5px;
+  transition: 0.3s;
 }
 
-.card1 p, .card2 p, .card3 p, .card4 p {
-  font-size: 0.95rem;
-  color: #666;
-  margin: 12px 18px 25px;
-  line-height: 1.6;
-}
+.sports-item:hover .card-content h3 { color: #03a9f4; }
+.card-content p { color: #666; font-size: 1rem; line-height: 1.6; }
 
-/*  About Section  */
+
+/* --- [4] About (Dark Aesthetic) --- */
 .about-section {
   text-align: center;
-  padding: 100px 35px;
-  background-color: #000;
+  padding: 120px 35px;
+  background-color: #080808;
+  color: #fff;
 }
 
 .about-section h2 {
-  font-size: 2rem;
-  color: #fff;
-  letter-spacing: 0.8px;
-  margin-bottom: 25px;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  
+  animation: fadeInUp linear both;
+  animation-timeline: view();
+  animation-range: entry 10% cover 40%;
 }
 
 .about-section p {
-  font-size: 1.1rem;
-  color: #d2d2d2;
-  max-width: 700px;
+  font-size: 1.2rem;
+  color: #aaa;
+  max-width: 800px;
   margin: auto;
-  line-height: 1.9;
-  letter-spacing: 0.3px;
+  line-height: 1.8;
+  
+  animation: fadeInUp linear both;
+  animation-timeline: view();
+  animation-range: entry 10% cover 40%;
 }
-

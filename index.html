@@ -3,90 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adventure Sports</title>
-    <!-- Modern typography from original style context -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Adventure Sports | Explore the Extremes</title>
+    <meta name="description" content="Discover the most thrilling adventure sports around the world. Skydiving, Rock Climbing, Paragliding and more.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <!-- Navigation Bar -->
-  <nav class="navbar" id="navbar">
-    <div class="logo">ADVENTURE</div>
-    <ul class="nav-links">
-      <li><a href="#home" class="nav-btn">Home</a></li>
-      <li><a href="#sports" class="nav-btn">Sports</a></li>
-      <li><a href="#about" class="nav-btn">About</a></li>
-      <li><a href="#contact" class="nav-btn">Contact</a></li>
-    </ul>
-  </nav>
 
-  <!-- Front Section -->
-  <section id="home" class="front">
-    <img src="https://media.istockphoto.com/id/1092719712/photo/snowboarder-jumping-through-air-with-deep-blue-sky-in-background.jpg?s=612x612&w=0&k=20&c=6TiJhfEm9UoLX-ZCAu7YjXipq27HCyb-pRREWOl1NAA=" alt="Adventure background" class="front-bg">
-    <div class="front-content">
-      <h1 class="animate-text-up">GO EXPLORE THE WORLD, LIVE THE ADVENTURE</h1>
-      <p class="animate-text-up delay-1">Explore, Experience, and Embrace the Wild!</p>
-      <a href="#sports" class="discover animate-text-up delay-2">DISCOVER NOW</a>
-    </div>
-  </section>
+    <!-- Navigation -->
+    <nav class="navbar" id="main-nav">
+        <div class="logo">ADV<span>ENTURE</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#sports">Sports</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-  <!-- Popular Adventure Sports Section -->
-  <section id="sports" class="sports-section">
-    <h2 class="section-title">POPULAR ADVENTURE SPORTS</h2>
-    <div class="sports-card">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Push Your <br>Limits</h1>
+            <p>Experience the ultimate rush and explore the world's most extreme challenges. Your journey into the wild starts here.</p>
+            <a href="#sports" class="btn-primary">Explore Sports</a>
+        </div>
+    </section>
 
-        <div class="card sports-item">
-          <div class="img-wrapper">
-            <img src="https://wnyskydiving.com/wp-content/uploads/learn-to-skydive-aff-2.jpg" alt="SKYDIVING">
-          </div>
-          <div class="card-content">
-            <h3>SKYDIVING</h3>
-            <p>Defy gravity and dive through the skies for the ultimate adrenaline rush</p>
-          </div>
+    <!-- Popular Sports Section -->
+    <section class="section" id="sports">
+        <div class="section-header">
+            <h2>Popular Sports</h2>
+            <div class="line"></div>
         </div>
 
-        <div class="card sports-item">
-          <div class="img-wrapper">
-            <img src="https://plus.unsplash.com/premium_photo-1683380297110-a8d0ab72f79e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cm9jayUyMGNsaW1iaW5nfGVufDB8fDB8fHww&fm=jpg&q=60&w=3000" alt="ROCK CLIMBING">
-          </div>
-          <div class="card-content">
-            <h3>ROCK CLIMBING</h3>
-            <p>Conquer rugged cliffs and embrace the thrill of reaching new heights</p>
-          </div>
-        </div>
-        
-        <div class="card sports-item">
-          <div class="img-wrapper">
-            <img src="https://travenjo.com/wp-content/uploads/2022/08/Paragliding-Unsplash-1-gaimg.jpg" alt="Paragliding">
-          </div>
-          <div class="card-content">
-            <h3>PARAGLIDING</h3>
-            <p>Fly high and witness breathtaking views</p>
-          </div>
-        </div>
+        <div class="sports-grid">
+            <!-- Skydiving -->
+            <div class="sport-card">
+                <div class="sport-img">
+                    <img src="images/skydiving.png" alt="Skydiving">
+                </div>
+                <div class="sport-info">
+                    <h3>Skydiving</h3>
+                    <p>Defy gravity and experience the ultimate freedom of flight. A heart-pounding plunge from thousands of feet.</p>
+                </div>
+            </div>
 
-        <div class="card sports-item">
-          <div class="img-wrapper">
-            <img src="https://www.shutterstock.com/image-photo/anonymous-male-surfer-silhouette-on-260nw-1988214974.jpg" alt="Surfing">
-          </div>
-          <div class="card-content">
-            <h3>SURFING</h3>
-            <p>Ride the ocean waves and embrace the freedom of endless horizons</p>
-          </div>
+            <!-- Rock Climbing -->
+            <div class="sport-card">
+                <div class="sport-img">
+                    <img src="images/rock_climbing.png" alt="Rock Climbing">
+                </div>
+                <div class="sport-info">
+                    <h3>Rock Climbing</h3>
+                    <p>Conquer sheer cliffs and reach new heights. Test your strength and determination against nature's walls.</p>
+                </div>
+            </div>
+
+            <!-- Paragliding -->
+            <div class="sport-card">
+                <div class="sport-img">
+                    <img src="images/paragliding.png" alt="Paragliding">
+                </div>
+                <div class="sport-info">
+                    <h3>Paragliding</h3>
+                    <p>Soar through the skies like a bird. Witness breathtaking landscapes from a unique aerial perspective.</p>
+                </div>
+            </div>
+
+            <!-- Surfing -->
+            <div class="sport-card">
+                <div class="sport-img">
+                    <img src="images/surfing.png" alt="Surfing">
+                </div>
+                <div class="sport-info">
+                    <h3>Surfing</h3>
+                    <p>Ride the mighty ocean waves. Feel the power of the sea as you master the perfect barrel.</p>
+                </div>
+            </div>
+
+            <!-- Bungee Jumping -->
+            <div class="sport-card">
+                <div class="sport-img">
+                    <img src="images/bungee_jumping.png" alt="Bungee Jumping">
+                </div>
+                <div class="sport-info">
+                    <h3>Bungee Jumping</h3>
+                    <p>Take the leap of faith. Experience the ultimate freefall followed by the exhilarating rebound.</p>
+                </div>
+            </div>
+
+            <!-- Scuba Diving -->
+            <div class="sport-card">
+                <div class="sport-img">
+                    <img src="images/scuba_diving.png" alt="Scuba Diving">
+                </div>
+                <div class="sport-info">
+                    <h3>Scuba Diving</h3>
+                    <p>Explore the hidden wonders of the deep sea. Encounter vibrant marine life and stunning coral reefs.</p>
+                </div>
+            </div>
+
+            <!-- Mountain Biking -->
+            <div class="sport-card">
+                <div class="sport-img">
+                    <img src="images/mountain_biking.png" alt="Mountain Biking">
+                </div>
+                <div class="sport-info">
+                    <h3>Mountain Biking</h3>
+                    <p>Navigate rugged trails and steep descents. Feel the speed and agility as you conquer the mountain.</p>
+                </div>
+            </div>
+
+            <!-- Canyoning -->
+            <div class="sport-card">
+                <div class="sport-img">
+                    <img src="images/canyoning.png" alt="Canyoning">
+                </div>
+                <div class="sport-info">
+                    <h3>Canyoning</h3>
+                    <p>Rappel, swim, and slide through narrow canyons and waterfalls. An adventure that combines land and water.</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>We are dedicated to bringing you the most authentic and thrilling adventure experiences. Our mission is to inspire courage and a love for the great outdoors through extreme sports.</p>
+            <p>Whether you're a seasoned pro or a first-time adventurer, we provide the resources and community to help you push your boundaries safely.</p>
+        </div>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="about-section">
-    <h2>ABOUT</h2>
-    <p>
-      Adventure sports teach courage, teamwork, and perseverance.<br>
-      They're not just thrilling—they're transformative experiences
-    </p>
-  </section>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#sports">Sports</a>
+            <a href="#about">About</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Adventure Sports. All rights reserved.</p>
+            <p>Built with passion for the Wild.</p>
+        </div>
+    </footer>
 
 </body>
 </html>

@@ -1,319 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+:root {
+    --primary: #0ea5e9;
+    --primary-dark: #0284c7;
+    --navy-900: #0f172a;
+    --navy-800: #1e293b;
+    --navy-700: #334155;
+    --text-white: #f8fafc;
+    --text-gray: #94a3b8;
+    --bg-light: #ffffff;
+    --glass: rgba(15, 23, 42, 0.8);
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
-  background: #ffffff;
-  color: #222;
-  line-height: 1.7;
-  overflow-x: hidden;
+    background-color: var(--bg-light);
+    color: var(--navy-900);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* --- [1] Navbar (Zero JS Scroll Detection) --- */
+/* --- Navigation --- */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px 70px;
-  background-color: transparent;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  
-  /* Modern CSS Scroll detection */
-  animation: navScrollChange linear both;
-  animation-timeline: scroll();
-  animation-range: 0px 100px;
-  transition: all 0.3s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: var(--transition);
 }
 
-@keyframes navScrollChange {
-  to {
-    padding: 15px 70px;
-    background-color: rgba(228, 231, 56, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  }
+.navbar.scrolled {
+    padding: 1rem 5%;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .logo {
-  font-size: 1.9rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: #fff;
-  animation: logoColorChange linear both;
-  animation-timeline: scroll();
-  animation-range: 0px 100px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--text-white);
+    text-transform: uppercase;
 }
 
-@keyframes logoColorChange {
-  to { color: #111; }
+.logo span {
+    color: var(--primary);
 }
 
 .nav-links {
-  display: flex;
-  gap: 30px;
-  list-style: none;
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
 }
 
-.nav-btn {
-  text-decoration: none;
-  color: #fff;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  padding-bottom: 5px;
-  position: relative;
-  transition: color 0.3s ease;
-  
-  animation: navBtnColorChange linear both;
-  animation-timeline: scroll();
-  animation-range: 0px 100px;
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-white);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    position: relative;
 }
 
-@keyframes navBtnColorChange {
-  to { color: #333; }
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: var(--transition);
 }
 
-.nav-btn::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #03a9f4;
-  transition: width 0.3s ease;
+.nav-links a:hover::after {
+    width: 100%;
 }
 
-.nav-btn:hover::after { width: 100%; }
-.nav-btn:hover { color: #007acc; }
-
-
-/* --- [2] Hero (Scroll-Based Parallax) --- */
-.front {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  overflow: hidden;
+.nav-links a:hover {
+    color: var(--primary);
 }
 
-.front-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(60%);
-  z-index: -1;
-  
-  /* Scroll-driven Scale Parallax */
-  animation: heroScrollScale linear both;
-  animation-timeline: scroll();
-  animation-range: 0 100vh;
+/* --- Hero Section --- */
+.hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('images/hero.png') no-repeat center center/cover;
+    text-align: center;
+    color: var(--text-white);
 }
 
-/* Parallax zoom synced with user scroll */
-@keyframes heroScrollScale {
-  from { transform: scale(1); }
-  to { transform: scale(1.3) translateY(100px); }
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8));
 }
 
-.front-content {
-  color: #fff;
-  max-width: 750px;
-  padding: 20px;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    padding: 0 20px;
 }
 
-.front-content h1 {
-  font-size: 3.8rem;
-  font-weight: 800;
-  margin-bottom: 20px;
-  letter-spacing: 1.5px;
-  line-height: 1.1;
-  
-  /* Entrance animation */
-  animation: entranceSlideUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+.hero-content h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: -2px;
 }
 
-.front-content p {
-  font-size: 1.3rem;
-  letter-spacing: 0.5px;
-  margin-bottom: 45px;
-  
-  /* Stagger entrance */
-  animation: entranceSlideUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s both;
+.hero-content p {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    color: var(--text-gray);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-@keyframes entranceSlideUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+.btn-primary {
+    display: inline-block;
+    padding: 1.2rem 2.8rem;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    border: 2px solid var(--primary);
 }
 
-.discover {
-  display: inline-block;
-  padding: 18px 50px;
-  background-color: #03a9f4;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 40px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(3, 169, 244, 0.3);
-  position: relative;
-  overflow: hidden;
-  animation: entranceSlideUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s both;
+.btn-primary:hover {
+    background: transparent;
+    color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
 }
 
-.discover:hover {
-  background-color: #0288d1;
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 15px 30px rgba(3, 169, 244, 0.5);
+/* --- Sports Section --- */
+.section {
+    padding: 100px 5%;
 }
 
-.discover::after {
-  content: "";
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: 0.5s;
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
 }
 
-.discover:hover::after {
-  left: 100%;
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--navy-900);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
 }
 
-
-/* --- [3] Sports Cards (Zero JS Reveal on Scroll) --- */
-.sports-section {
-  text-align: center;
-  padding: 120px 60px;
-  background: white;
+.section-header .line {
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+    margin: 0 auto;
 }
 
-.section-title {
-  font-size: 2.8rem;
-  margin-bottom: 80px;
-  color: #111;
-  letter-spacing: 1px;
-  position: relative;
-  display: inline-block;
-  
-  /* CSS Scroll Reveal (Anonymous view timeline) */
-  animation: fadeInUp linear both;
-  animation-timeline: view();
-  animation-range: entry 10% cover 40%;
+.sports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.sports-card {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
-  max-width: 1300px;
-  margin: 0 auto;
+.sport-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    border: 1px solid #f1f5f9;
 }
 
-.sports-item {
-  background-color: white;
-  border-radius: 20px;
-  overflow: hidden;
-  width: 290px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  cursor: pointer;
-  border: 1px solid #f0f0f0;
-
-  /* CSS Scroll Reveal (Anonymous view timeline) */
-  animation: fadeInUp linear both;
-  animation-timeline: view();
-  animation-range: entry 5% cover 35%;
+.sport-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(100px) scale(0.9); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+.sport-img {
+    height: 250px;
+    overflow: hidden;
 }
 
-.sports-item:hover {
-  transform: translateY(-20px) rotateX(2deg) rotateY(-2deg);
-  box-shadow: 0 40px 60px rgba(0, 0, 0, 0.12);
-  border-color: #03a9f4;
+.sport-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
 }
 
-.img-wrapper {
-  overflow: hidden;
-  height: 240px;
-  width: 100%;
+.sport-card:hover .sport-img img {
+    transform: scale(1.1);
 }
 
-.img-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: 0.8s ease;
+.sport-info {
+    padding: 2rem;
 }
 
-.sports-item:hover .img-wrapper img {
-  transform: scale(1.15);
+.sport-info h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: var(--navy-900);
 }
 
-.card-content { padding: 30px 25px; }
-
-.card-content h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: #111;
-  transition: 0.3s;
+.sport-info p {
+    color: var(--navy-700);
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
-.sports-item:hover .card-content h3 { color: #03a9f4; }
-.card-content p { color: #666; font-size: 1rem; line-height: 1.6; }
-
-
-/* --- [4] About (Dark Aesthetic) --- */
-.about-section {
-  text-align: center;
-  padding: 120px 35px;
-  background-color: #080808;
-  color: #fff;
+/* --- About Section --- */
+.about {
+    background: var(--navy-900);
+    color: var(--text-white);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4rem;
 }
 
-.about-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  letter-spacing: 2px;
-  
-  animation: fadeInUp linear both;
-  animation-timeline: view();
-  animation-range: entry 10% cover 40%;
+.about-content {
+    flex: 1;
+    min-width: 300px;
 }
 
-.about-section p {
-  font-size: 1.2rem;
-  color: #aaa;
-  max-width: 800px;
-  margin: auto;
-  line-height: 1.8;
-  
-  animation: fadeInUp linear both;
-  animation-timeline: view();
-  animation-range: entry 10% cover 40%;
+.about-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-content p {
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+}
+
+/* --- Footer --- */
+footer {
+    padding: 50px 5% 20px;
+    background: #080c14;
+    color: var(--text-white);
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: var(--text-gray);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+.copyright {
+    color: #475569;
+    font-size: 0.85rem;
+    border-top: 1px solid #1e293b;
+    padding-top: 20px;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1.2rem 5%;
+    }
+    
+    .nav-links {
+        display: none; /* In a real project we'd add a hamburger menu */
+    }
+    
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+}
+
+/* Navbar Scroll Effect Logic (using standard CSS if possible, but user asked for responsive) */
+/* We'll add a tiny bit of inline JS in index.html for the scroll class since it's common and usually okay, */
+/* but I'll try to keep it CSS only if possible. Actually, scroll animations in CSS are new. */
+/* I'll use the scroll() timeline for the navbar if browser supports it, or just keep it simple. */
+
+@keyframes nav-scroll {
+    to {
+        background: var(--glass);
+        backdrop-filter: blur(12px);
+        padding: 1rem 5%;
+    }
+}
+
+.navbar {
+    animation: nav-scroll linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
 }
